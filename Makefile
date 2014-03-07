@@ -1,13 +1,12 @@
 CFLAGS=-Wall -pedantic -g -O2
 #LDLIBS=-lm
 
-BIN=gol
+BIN=gameoflife
 
-$(BIN): main.o 
+$(BIN): main.o utility.o rules.o
 	$(CC) $(CFLAGS) $(LDLIBS) $^ -o $@
 
-#main.o: file_io.h utility.h boundary.h solution.h
-#file_io.o: utility.h
+main.o: utility.h utility.c rules.h rules.c
 
 clean:
 	$(RM) *.o
