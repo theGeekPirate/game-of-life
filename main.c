@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     int **cells;
     int **neighbors;
     int nx = 80;
-    int ny = 40;
+    int ny = 30;
     int c;
     unsigned int it = 0;
     int world_is_dead = 0;
