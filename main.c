@@ -7,12 +7,14 @@
 
 #define GOLVERSION 0.1
 
+/*#define SHOW_NEIGHBORS*/
+
 int main(int argc, char **argv)
 {
     int **cells;
     int **neighbors;
-    int nx = 40;
-    int ny = 10;
+    int nx = 80;
+    int ny = 40;
     int c;
     unsigned int it = 0;
     int world_is_dead = 0;
@@ -56,16 +58,18 @@ int main(int argc, char **argv)
 
     random_population(cells, nx, ny, 0.5);
 
-    print_cell_matrix("cells", cells, nx, ny);
+    print_cell_matrix(cells, nx, ny);
 
     while (world_is_dead == 0) {
 
         world_is_dead = find_neighbor_count(cells, neighbors, nx, ny);
         cell_transitions(cells, neighbors, nx, ny);
 
-        printf("it = %d\n", it);
+        printf("\n%d. generation (end with Ctrl-C)\n", it);
+#ifdef SHOW_NEIGHBORS
         print_matrix("neighbors", neighbors, nx, ny);
-        print_cell_matrix("cells", cells, nx, ny);
+#endif
+        print_cell_matrix(cells, nx, ny);
 
         usleep(5e5);
 

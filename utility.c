@@ -36,10 +36,9 @@ void print_matrix(char* description, int **M, int nx, int ny)
     }
 }
 
-void print_cell_matrix(char* description, int **M, int nx, int ny)
+void print_cell_matrix(int **M, int nx, int ny)
 {
     int i, j;
-    printf("%s:\n", description);
     for (j=0; j<ny; j++) {
         for (i=0; i<nx; i++) {
             if (M[i][j] == 1)
