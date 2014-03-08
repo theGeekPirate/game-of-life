@@ -67,7 +67,7 @@ int main(int argc, char **argv)
         print_matrix("neighbors", neighbors, nx, ny);
         print_cell_matrix("cells", cells, nx, ny);
 
-        sleep(1);
+        usleep(5e5);
 
         it++;
     }
