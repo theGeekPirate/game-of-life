@@ -25,13 +25,17 @@ int find_neighbor_count(int **cells, int **neighbors, int nx, int ny)
     int i, j, x, y;
     int nneighbors;
 
-    for (i=1; i<nx-1; i++) {
-        for (j=1; j<ny-1; j++) {
+    /*for (i=1; i<nx-1; i++) {
+        for (j=1; j<ny-1; j++) {*/
+    for (i=0; i<nx; i++) {
+        for (j=0; j<ny; j++) {
             nneighbors = 0;
 
             for (x=-1; x<2; x++) {
                 for (y=-1; y<2; y++) {
-                    if (x != 0 && y != 0) {
+                    if (x != 0 && y != 0 &&
+                            i+x > 0 && i+x < nx &&
+                            j+y > 0 && j+y < ny) {
                         nneighbors += cells[i+x][j+y];
                     }
                 }
@@ -51,8 +55,8 @@ int find_neighbor_count(int **cells, int **neighbors, int nx, int ny)
 void cell_transitions(int **cells, int **neighbors, int nx, int ny)
 {
     int i, j, nneighbors;
-    for (i=1; i<nx-1; i++) {
-        for (j=1; j<ny-1; j++) {
+    for (i=0; i<nx; i++) {
+        for (j=0; j<ny; j++) {
             nneighbors = neighbors[i][j];
 
             if (cells[i][j] == 1) { /* alive */

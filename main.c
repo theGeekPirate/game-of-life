@@ -5,13 +5,13 @@
 #include "utility.h"
 #include "rules.h"
 
-#define VERSION 0.1
+#define GOLVERSION 0.1
 
 int main(int argc, char **argv)
 {
     int **cells;
     int **neighbors;
-    int nx = 10;
+    int nx = 40;
     int ny = 10;
     int c;
     unsigned int it = 0;
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
         case 'v':
             printf("%s: Conway's Game of Life, version %.1f\n"
                     "Written by Anders Damsgaard, "
-                    "https://github.com/anders-dc/game-of-life\n", argv[0], VERSION);
+                    "https://github.com/anders-dc/game-of-life\n", argv[0], GOLVERSION);
             return 0;
             break;
         case '?':
@@ -56,9 +56,8 @@ int main(int argc, char **argv)
 
     random_population(cells, nx, ny, 0.5);
 
-    print_matrix("cells", cells, nx, ny);
+    print_cell_matrix("cells", cells, nx, ny);
 
-    /*while ((c = getchar()) != 'q') {*/
     while (world_is_dead == 0) {
 
         world_is_dead = find_neighbor_count(cells, neighbors, nx, ny);
@@ -66,7 +65,7 @@ int main(int argc, char **argv)
 
         printf("it = %d\n", it);
         print_matrix("neighbors", neighbors, nx, ny);
-        print_matrix("cells", cells, nx, ny);
+        print_cell_matrix("cells", cells, nx, ny);
 
         sleep(1);
 

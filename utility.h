@@ -4,5 +4,6 @@
 int allocate_matrix(int ***M, int nx, int ny);
 void free_matrix(int ***M, int nx);
 void print_matrix(char* description, int **M, int nx, int ny);
+void print_cell_matrix(char* description, int **M, int nx, int ny);
 
 #endif

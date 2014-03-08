@@ -1,5 +1,5 @@
 CFLAGS=-Wall -pedantic -g -O2
-#LDLIBS=-lm
+#LDLIBS=-lmgl
 
 BIN=gameoflife
 
